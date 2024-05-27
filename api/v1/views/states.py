@@ -9,7 +9,7 @@ from models import storage
 from models.state import State
 
 
-@app_views.route('/states', strict_slashes=False)
+@app_views.route('/states', methods=['GET'], strict_slashes=False)
 def get_states():
     """get state information for all states"""
     states = []
@@ -18,7 +18,7 @@ def get_states():
     return jsonify(states)
 
 
-@app_views.route('/states/<string:state_id>',
+@app_views.route('/states/<string:state_id>', methods=['GET'],
                  strict_slashes=False)
 def get_state(state_id):
     """get state information for specified state"""
