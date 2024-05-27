@@ -45,8 +45,6 @@ def post_state():
     """
     create a new state
     """
-    if request.content_type != 'application/json':
-        return abort(404,  'Not a JSON')
     if not request.get_json():
         return make_response(jsonify({'error': 'Not a JSON'}), 400)
     if 'name' not in request.get_json():
@@ -62,8 +60,6 @@ def put_state(state_id):
     """
     update a state
     """
-    if request.content_type != 'application/json':
-        return abort(404,  'Not a JSON')
     state = storage.get("State", state_id)
     if state is None:
         abort(404)
